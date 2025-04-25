@@ -5,6 +5,21 @@ Minhas configurações para o [Firefox-Mod-Blur](https://github.com/datguypiko/F
 Sempre que tenho que reinstalar o FMB, tenho que passar por cada configuração.
 Então, criei esse repositório com as configurações que costumo usar só para facilitar quando tiver que reinstalar tudo.
 
+## Configuração
+
+Para habilitar o tema, é necessário realizar as seguintes alterações :
+- Habilitar o tema :
+    - digite no firefox `about:config` e busque e defina as opções abaixo;
+    - `toolkit.legacyUserProfileCustomizations.stylesheets` -> `True`;
+    - `svg.context-properties.content.enabled` -> `True`;
+
+- Copiar arquivos :
+    - digite no firefox `about:support`;
+    - use o botão *Open folder* na seção *Profile*;
+    - copie a pasta `chrome` desse repositório para a pasta aberta acima;
+
+- Reinicie a Raposa de Fogo.
+
 ## Arquivos
 
 Lista de arquivos nos seus locais originais (para futuras atualizações) :
@@ -23,3 +38,6 @@ Lista de arquivos nos seus locais originais (para futuras atualizações) :
 - [userChrome.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/userChrome.css)
 - [userContent.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/userContent.css)
 - [wallpaper-edition.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/EXTRA%20THEMES/Wallpaper%20Edition/Style%201/wallpaper-edition.css)
+
+## Última Atualização
+- 25/04/2025

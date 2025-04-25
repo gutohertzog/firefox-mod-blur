@@ -1,11 +1,11 @@
-/* ______ _           __             __  __           _   ____  _     _    _ _____  
-  |  ____(_)         / _|           |  \/  |         | | |  _ \| |   | |  | |  __ \ 
+/* ______ _           __             __  __           _   ____  _     _    _ _____
+  |  ____(_)         / _|           |  \/  |         | | |  _ \| |   | |  | |  __ \
   | |__   _ _ __ ___| |_ _____  __  | \  / | ___   __| | | |_) | |   | |  | | |__) |
-  |  __| | | '__/ _ \  _/ _ \ \/ /  | |\/| |/ _ \ / _` | |  _ <| |   | |  | |  _  / 
-  | |    | | | |  __/ || (_) >  <   | |  | | (_) | (_| | | |_) | |___| |__| | | \ \ 
+  |  __| | | '__/ _ \  _/ _ \ \/ /  | |\/| |/ _ \ / _` | |  _ <| |   | |  | |  _  /
+  | |    | | | |  __/ || (_) >  <   | |  | | (_) | (_| | | |_) | |___| |__| | | \ \
   |_|    |_|_|  \___|_| \___/_/\_\  |_|  |_|\___/ \__,_| |____/|______\____/|_|  \_\
-  
-                                                                                    
+
+
   Github:         github.com/datguypiko/Firefox-Mod-Blur     */
 
 /*===============================================================
@@ -355,6 +355,14 @@ Order of Toolbars
   }
 }
 
+@media -moz-pref("sidebar.revamp") {
+  @media not -moz-pref("sidebar.verticaltabs") {
+    #navigator-toolbox {
+      border-bottom: none !important;
+    }
+  }
+}
+
 /* Set navigation toolbar to transparent */
 #navigator-toolbox #nav-bar {
   background-color: transparent !important;
@@ -512,7 +520,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
   font-size: 1.1rem !important;
 }
 
-/* Styling Search Containers 
+/* Styling Search Containers
     #urlbar-background - main search container
     #searchbar - secondary/extra search container */
 #urlbar-background,
@@ -795,7 +803,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
     &:is([soundplaying], [muted], [activemedia-blocked]) {
       top: unset !important;
       inset-inline-end: unset !important;
-      transform: translate(50%,-50%); 
+      transform: translate(50%,-50%);
     }
   }
 } */
@@ -994,7 +1002,7 @@ button:hover > .button-background {
     min-width: 150px !important;
   }
 
-  /* 
+  /*
  * Fix the height of the tab because if you
  * change --tab-min-height it doesnt work for fullcreen
  */
@@ -1431,8 +1439,8 @@ toolbar
 =====================================================================*/
 
 @media not -moz-pref("mod.search.info.buttons.show.always") {
-  /* - [persistsearchterms] - 
-     Used when "Show search terms instead of URL on 
+  /* - [persistsearchterms] -
+     Used when "Show search terms instead of URL on
      default search engine results page" enabled.
      When you search a globe icon shows up to show full url */
 
@@ -1443,7 +1451,7 @@ toolbar
     margin-inline-start: calc(-16px - 2 * var(--urlbar-icon-padding));
     transition: margin-inline-start 100ms linear, opacity 200ms linear;
   }
-  
+
   #identity-box:hover #identity-icon-box,
   #identity-box:hover #identity-permission-box,
   #identity-box #identity-permission-box[open="true"],
@@ -1687,8 +1695,8 @@ toolbar
     /*    background-image: url('ASSETS/svg/dots-three-outline-vertical-fill-svgrepo-com.svg');
    background-size: 14px 14px;
     background-repeat: no-repeat;
-  
-      */ /*! width:14px; */ /* 
+
+      */ /*! width:14px; */ /*
       height: 14px;
       content:""; */
 
@@ -1745,15 +1753,15 @@ toolbar
 
   /* Search button show on hover in URL bar. */
   /* #urlbar-container:not(:hover) #urlbar:not(.searchButton):not([focused])
-    > .urlbar-input-container > 
+    > .urlbar-input-container >
     #identity-box[pageproxystate="invalid"] #identity-icon {
-      opacity: 0 !important; 
+      opacity: 0 !important;
     }
-    
+
     #urlbar-container #urlbar:not(.searchButton)
-    > .urlbar-input-container > 
+    > .urlbar-input-container >
     #identity-box[pageproxystate="invalid"] #identity-icon {
-      opacity: 1 !important; 
+      opacity: 1 !important;
       visibility: visible !important;
       transition: opacity 0.2s ease;
     } */
@@ -1954,7 +1962,9 @@ toolbar
 
   /* Remove the white line around the content window */
   #tabbrowser-tabbox {
-    outline: 1px solid light-dark(#0000000a, #00000026) !important;
+/*     outline: 1px solid light-dark(#0000000a, #00000026) !important; */
+    outline: none !important;
+    box-shadow: -0px 0px 2px 0 light-dark(rgba(0,0,0,.2), rgba(255,255,255,.06)) !important;
     /*! box-shadow: none !important; */
   }
 }
@@ -2106,7 +2116,7 @@ toolbar
 
   /* Window control buttons right side  */
   @media not (-moz-pref("mod.force.window.control.buttons.left.side")
-       or (-moz-gtk-csd-reversed-placement) 
+       or (-moz-gtk-csd-reversed-placement)
        or -moz-pref("mod.macos")),
        -moz-pref("mod.force.window.control.buttons.right.side") {
     /* Reverse button direction*/
@@ -2135,7 +2145,7 @@ toolbar
     }
   }
 
-  /* When screen is small and cant fit window 
+  /* When screen is small and cant fit window
      control buttons in nav-bar move them down to tab-bar */
   @media not -moz-pref("sidebar.verticalTabs") {
     @media not -moz-pref("firefoxcss.tabs.on.top.enable") {
@@ -2149,5 +2159,23 @@ toolbar
         }
       }
     }
+  }
+}
+
+@media -moz-pref("sidebar.verticalTabs") {
+  @media -moz-pref("mod.vertical-tabs.frame.no.borders") {
+      #browser #tabbrowser-tabbox {
+          outline: none !important;
+          box-shadow: none !important;
+      }
+  }
+}
+
+
+@media -moz-pref("browser.tabs.fadeOutUnloadedTabs") {
+  browser.tabs.fadeOutUnloadedTabs
+  .tabbrowser-tab[pending] .tab-icon-stack,
+  .tabbrowser-tab[pending] .tab-text.tab-label {
+    opacity: 0.65 !important;
   }
 }
