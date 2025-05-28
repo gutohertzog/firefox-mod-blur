@@ -37,7 +37,6 @@ Lista de arquivos nos seus locais originais (para futuras atualizações) :
 - [transparent_tabs_bg_color.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/EXTRA%20MODS/Tabs%20Bar%20Mods/Tabs%20-%20transparent%20background%20color/transparent_tabs_bg_color.css)
 - [userChrome.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/userChrome.css)
 - [userContent.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/userContent.css)
-- [wallpaper-edition.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/EXTRA%20THEMES/Wallpaper%20Edition/Style%201/wallpaper-edition.css)
 
 ## Última Atualização
-- 25/04/2025
+- 28/05/2025
