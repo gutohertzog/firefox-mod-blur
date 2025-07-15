@@ -18,6 +18,12 @@ Para habilitar o tema, é necessário realizar as seguintes alterações :
     - use o botão *Open folder* na seção *Profile*;
     - copie a pasta `chrome` desse repositório para a pasta aberta acima;
 
+- Outras configurações :
+    - em `about:config`, busque e defina as opções abaixo;
+    - `browser.newtabpage.activity-stream.system.showWeather`;
+    - `browser.tabs.hoverPreview.enabled`;
+    - `browser.tabs.loadBookmarksInBackground`;
+
 - Reinicie a Raposa de Fogo.
 
 ## Arquivos
