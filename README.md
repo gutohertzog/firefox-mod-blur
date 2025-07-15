@@ -45,4 +45,4 @@ Lista de arquivos nos seus locais originais (para futuras atualizações) :
 - [userContent.css](https://github.com/datguypiko/Firefox-Mod-Blur/blob/master/userContent.css)
 
 ## Última Atualização
-- 28/05/2025
+- 15/07/2025
