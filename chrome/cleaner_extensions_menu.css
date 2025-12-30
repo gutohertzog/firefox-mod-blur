@@ -126,7 +126,7 @@
 
 @media not -moz-pref("mod.disable.extensions-menu.separator") {
   @media not -moz-pref("mod.hide.faded-extensions.inside.extensions-menu") {
-  /* Line separator when "faded out" extension is present. 
+  /* Line separator when "faded out" extension is present.
      It automatically turns off if there are no faded out extensions
      present */
   #unified-extensions-view

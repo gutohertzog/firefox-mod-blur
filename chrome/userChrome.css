@@ -1,11 +1,11 @@
-/* ______ _           __             __  __           _   ____  _     _    _ _____  
-  |  ____(_)         / _|           |  \/  |         | | |  _ \| |   | |  | |  __ \ 
+/* ______ _           __             __  __           _   ____  _     _    _ _____
+  |  ____(_)         / _|           |  \/  |         | | |  _ \| |   | |  | |  __ \
   | |__   _ _ __ ___| |_ _____  __  | \  / | ___   __| | | |_) | |   | |  | | |__) |
-  |  __| | | '__/ _ \  _/ _ \ \/ /  | |\/| |/ _ \ / _` | |  _ <| |   | |  | |  _  / 
-  | |    | | | |  __/ || (_) >  <   | |  | | (_) | (_| | | |_) | |___| |__| | | \ \ 
+  |  __| | | '__/ _ \  _/ _ \ \/ /  | |\/| |/ _ \ / _` | |  _ <| |   | |  | |  _  /
+  | |    | | | |  __/ || (_) >  <   | |  | | (_) | (_| | | |_) | |___| |__| | | \ \
   |_|    |_|_|  \___|_| \___/_/\_\  |_|  |_|\___/ \__,_| |____/|______\____/|_|  \_\
-  
-                                                                                    
+
+
   Github:         github.com/datguypiko/Firefox-Mod-Blur     */
 
 /*===============================================================
@@ -20,6 +20,7 @@
 @import url("spill-style-part1-file.css");
 @import url("white_github_icon_in_bookmarks.css");
 @import url("only_show_list-all-tabs_when_tabs_overflowing.css");
+@import url("thicker_control_buttons.css");
 @import url("min-max-close_buttons.css");
 @import url("acrylic_micaforeveryone.css");
 @import url("privacy_blur_tabs_content.css");
@@ -44,7 +45,6 @@
 @import url("searchbox_text_align_left.css");
 @import url("tabs_take_full_bar_width.css");
 @import url("show_searchbar_dots_only_on_hover.css");
-@import url("thicker_control_buttons.css");
 
 /*=====================================================================
 ================= D A R K   T H E M E   C O L O R S ===================
@@ -380,6 +380,16 @@ Order of Toolbars
   }
 }
 
+/* Fix purple background color when switching tabs in private
+window for this specific moz preference. */
+:root {
+  &[privatebrowsingmode="temporary"] {
+    @media -moz-pref("browser.privatebrowsing.felt-privacy-v1") {
+        --tabpanel-background-color: var(--firefoxcss-main-bg-color) !important;
+    }
+  }
+}
+
 /* Avoids bright flash */
 #tabbrowser-tabpanels {
   background-color: var(
@@ -520,10 +530,10 @@ about:config -> svg.context-properties.content.enabled -> true*/
   font-size: 1.1rem !important;
 }
 
-/* Styling Search Containers 
-    #urlbar-background - main search container
+/* Styling Search Containers
+    .urlbar-background - main search container
     #searchbar - secondary/extra search container */
-#urlbar-background,
+.urlbar-background,
 #searchbar {
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
@@ -540,7 +550,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 }
 
 /* Search box border radius  */
-#urlbar-background,
+.urlbar-background,
 #urlbar .urlbar-input-container,
 #searchbar {
   border-radius: var(--firefoxcss-border-radius) !important;
@@ -554,7 +564,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 /* Search outline disabled by default  */
 @media not -moz-pref("mod.searchBox.focus.outline.enable") {
   /* Disable Focus outline */
-  #urlbar[focused]:not([suppress-focus-border]) > #urlbar-background,
+  #urlbar[focused]:not([suppress-focus-border]) > .urlbar-background,
   #searchbar:focus-within {
     outline: none !important;
   }
@@ -580,7 +590,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 }
 
 /* Dropdown search box colors */
-#urlbar[breakout][breakout-extend][open] #urlbar-background {
+#urlbar[breakout][breakout-extend][open] .urlbar-background {
   border-bottom: var(--firefoxcss-url-breakout-border-bottom-color) !important;
   border-top: var(--firefoxcss-url-breakout-border-top-color) !important;
   box-shadow: var(--firefoxcss-url-breakout-box-shadow) !important;
@@ -593,7 +603,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 
 /* Disable weird animation */
 #urlbar[breakout][breakout-extend][breakout-extend-animate]
-  > #urlbar-background {
+  > .urlbar-background {
   animation: none !important;
 }
 
@@ -646,6 +656,11 @@ about:config -> svg.context-properties.content.enabled -> true*/
   .tab-label-container
   .tab-label {
   color: var(--firefoxcss-non-active-tabs) !important;
+}
+
+/* Remove empty space after pinned tabs */
+#pinned-tabs-container[orient="horizontal"] {
+  margin-inline-end: 0px !important;
 }
 
 .tabbrowser-tab .tab-label-container .tab-label {
@@ -803,7 +818,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
     &:is([soundplaying], [muted], [activemedia-blocked]) {
       top: unset !important;
       inset-inline-end: unset !important;
-      transform: translate(50%,-50%); 
+      transform: translate(50%,-50%);
     }
   }
 } */
@@ -973,13 +988,6 @@ button:hover > .button-background {
     padding: 0 8px !important;
   }
 
-  #TabsToolbar
-    #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-    > #tabbrowser-arrowscrollbox
-    > .tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
-    margin-inline-start: 0px !important;
-  }
-
   #tabbrowser-tabs {
     margin-left: 2px !important;
   }
@@ -1002,7 +1010,7 @@ button:hover > .button-background {
     min-width: 150px !important;
   }
 
-  /* 
+  /*
  * Fix the height of the tab because if you
  * change --tab-min-height it doesnt work for fullcreen
  */
@@ -1035,6 +1043,13 @@ tab-group[collapsed] > .tabbrowser-tab {
 ============ W I N D O W   C O N T R O L   B U T T O N S ==============
 =====================================================================*/
 /* :root[sizemode="fullscreen"] #navigator-toolbox { position: relative; } */
+
+/* Fix for web apps */
+:root[taskbartab] #navigator-toolbox:not([tabs-hidden]) {
+	#nav-bar .titlebar-buttonbox-container {
+      display: none !important;
+	}
+}
 
 @media (-moz-platform: windows) {
   /* Keep showing the buttons when alt menu visible */
@@ -1182,11 +1197,13 @@ menuseparator#context-sep-navigation {
 /* ----- Menu Colors ----- */
 menupopup,
 panel {
-  :not(#ContentSelectDropdown) > & {
-    --panel-border-color: var(--arrowpanel-border-color) !important;
-    --panel-padding: 2px 0px !important;
+/*   #ContentSelectDropdown used to remove websites native dropdown modifications */
+/*   #ctrlTab-panel used to fix Ctr+Tab */
+  :not(#ContentSelectDropdown) > &:not(#ctrlTab-panel, #autoscroller) {
+/*     --panel-border-color: var(--arrowpanel-border-color) !important; */
+    --panel-padding: 1px 0px !important;
     --panel-border-radius: 8px !important;
-    --panel-padding-block: 4px !important;
+/*     --panel-padding-block: 4px !important; */
     --panel-background: var(--firefoxcss-main-bg-color) !important;
   }
 }
@@ -1204,7 +1221,7 @@ panel {
 /* Top of context menu  */
 menupopup#contentAreaContextMenu {
   --panel-padding: unset !important;
-  --panel-padding: 0 0 4px !important;
+  --panel-padding: 0 0 2px !important;
 }
 
 /* Menu when right clicking links  */
@@ -1439,8 +1456,8 @@ toolbar
 =====================================================================*/
 
 @media not -moz-pref("mod.search.info.buttons.show.always") {
-  /* - [persistsearchterms] - 
-     Used when "Show search terms instead of URL on 
+  /* - [persistsearchterms] -
+     Used when "Show search terms instead of URL on
      default search engine results page" enabled.
      When you search a globe icon shows up to show full url */
 
@@ -1451,7 +1468,7 @@ toolbar
     margin-inline-start: calc(-16px - 2 * var(--urlbar-icon-padding));
     transition: margin-inline-start 100ms linear, opacity 200ms linear;
   }
-  
+
   #identity-box:hover #identity-icon-box,
   #identity-box:hover #identity-permission-box,
   #identity-box #identity-permission-box[open="true"],
@@ -1695,8 +1712,8 @@ toolbar
     /*    background-image: url('ASSETS/svg/dots-three-outline-vertical-fill-svgrepo-com.svg');
    background-size: 14px 14px;
     background-repeat: no-repeat;
-  
-      */ /*! width:14px; */ /* 
+
+      */ /*! width:14px; */ /*
       height: 14px;
       content:""; */
 
@@ -1753,15 +1770,15 @@ toolbar
 
   /* Search button show on hover in URL bar. */
   /* #urlbar-container:not(:hover) #urlbar:not(.searchButton):not([focused])
-    > .urlbar-input-container > 
+    > .urlbar-input-container >
     #identity-box[pageproxystate="invalid"] #identity-icon {
-      opacity: 0 !important; 
+      opacity: 0 !important;
     }
-    
+
     #urlbar-container #urlbar:not(.searchButton)
-    > .urlbar-input-container > 
+    > .urlbar-input-container >
     #identity-box[pageproxystate="invalid"] #identity-icon {
-      opacity: 1 !important; 
+      opacity: 1 !important;
       visibility: visible !important;
       transition: opacity 0.2s ease;
     } */
@@ -2109,7 +2126,7 @@ toolbar
 
   /* Window control buttons right side  */
   @media not (-moz-pref("mod.force.window.control.buttons.left.side")
-       or (-moz-gtk-csd-reversed-placement) 
+       or (-moz-gtk-csd-reversed-placement)
        or -moz-pref("mod.macos")),
        -moz-pref("mod.force.window.control.buttons.right.side") {
     /* Reverse button direction*/
@@ -2138,7 +2155,7 @@ toolbar
     }
   }
 
-  /* When screen is small and cant fit window 
+  /* When screen is small and cant fit window
      control buttons in nav-bar move them down to tab-bar */
   @media not -moz-pref("sidebar.verticalTabs") {
     @media not -moz-pref("firefoxcss.tabs.on.top.enable") {
@@ -2176,12 +2193,18 @@ toolbar
 /*=====================================================================
 ----------------- S E A R C H   M O D E   S W I T C H E R -------------
 =====================================================================*/
-@media -moz-pref("browser.urlbar.searchModeSwitcher.featureGate") or 
+@media -moz-pref("browser.urlbar.searchModeSwitcher.featureGate") or
   -moz-pref("browser.urlbar.scotchBonnet.enableOverride") {
   /* Disable searchmode switcher arrow */
   #urlbar[searchmode] #urlbar-searchmode-switcher,
-  #urlbar[searchmode] #searchmode-switcher-chicklet {
+  #urlbar[searchmode] .searchmode-switcher-chicklet {
     background-color: var(--firefoxcss-item-bg-color) !important;
+  }
+
+
+  #urlbar[searchmode] .searchmode-switcher-chicklet {
+    border-end-end-radius: var(--urlbar-icon-border-radius) !important;
+    border-start-end-radius: var(--urlbar-icon-border-radius) !important;
   }
 
   #urlbar:not([searchmode]) #urlbar-searchmode-switcher {
